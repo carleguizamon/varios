@@ -1,0 +1,143 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Testing page</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Slabo+27px&display=swap');
+
+    .body {
+      position: fixed;
+      overflow-y: scroll;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://www.rubyshore.com/wp-content/uploads/2018/11/automation-featured.jpg');
+    }
+
+    .head {
+      position: absolute;
+    }
+
+    .header div {
+      float: left;
+      color: #fff;
+      font-size: 40px;
+      font-weight: 200px;
+    }
+
+    .header div span {
+      position: relative;
+      color: #f29E20 !important;
+      text-align: center;
+    }
+
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+    }
+
+    body {
+      display: flex;
+    }
+
+    form {
+      margin: auto;
+    }
+
+    .login {
+      position: absolute;
+      height: 150px;
+      width: 350px;
+      display: inline-block;
+    }
+
+    .login input {
+      width: 250px;
+      height: 30px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 2px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 400;
+      padding: 4px;
+    }
+
+    .login input [type=button]:hover {
+      background: black;
+    }
+
+    .login input [type=button]:active {
+      opacity: 0.6;
+    }
+
+    .login input [type=text]:focus {
+      outline: none;
+      border: 1px solid rgba(255, 255, 255, 0.9)
+    }
+
+    .login input [type=password]:focus {
+      outline: none;
+      border: 1px solid rgba(255, 255, 255, 0.9)
+    }
+
+    .login input [type=button]:focus {
+      outline: none;
+    }
+
+    .error {
+      position: relative;
+      color: red;
+      float: left;
+    }
+  </style>
+
+</head>
+
+<body oncontextmenu="return false">
+
+  <div class="body"></div>
+  <div class="grad"></div>
+
+  <form name="login">
+    <div class="header">
+      <div><span>Automation <br />testing</span></div>
+    </div>
+    <div class="login" style="float: left;">
+      <input type="text" placeholder="username" name="userid" />
+      <input type="password" placeholder="password" name="pswrd" />
+      <input type="button" onclick="check(this.form)" value="Login" />
+    </div>
+    <div class="error">
+      <p></p>
+    </div>
+  </form>
+
+  <script>
+    function check(form) {
+      if (form.userid.value.length == 0) {
+        document.getElementsByClassName("error")[0].innerHTML = "Empty user name";
+        return false;
+      }
+      if (form.userid.value.length < 4) {
+        document.getElementsByClassName("error")[0].innerHTML = "User min length should be 4 characters";
+        return false;
+      }
+      if (form.userid.value.length > 12) {
+        document.getElementsByClassName("error")[0].innerHTML = "User max length should be 8 characters";
+        return false;
+      }
+      if (form.userid.value == "test-user1" && form.pswrd.value == "123456") {
+        window.location.href = './home.html'
+      } else {
+        document.getElementsByClassName("error")[0].innerHTML = "Wrong username or password";
+      }
+    }
+  </script>
+
+</body>
+
+</html>
